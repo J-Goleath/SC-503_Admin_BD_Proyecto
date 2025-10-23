@@ -1,3 +1,12 @@
+ALTER SESSION SET "_ORACLE_SCRIPT" = TRUE;
+
+CREATE TABLESPACE TBS_VETERINARIA1
+DATAFILE 'TBS_VETERINARIA1.dbf'
+SIZE 100M
+AUTOEXTEND ON NEXT 10M
+MAXSIZE 500M
+LOGGING;
+
 CREATE TABLE Direccion(
     IDtabla_Direccion VARCHAR2(3) DEFAULT 'ZIP' NOT NULL,
     ID_Direccion NUMBER GENERATED ALWAYS AS IDENTITY (START WITH 1 INCREMENT BY 1) NOT NULL,
@@ -7,7 +16,7 @@ CREATE TABLE Direccion(
     Barrio VARCHAR2(100) NOT NULL,
     Direccion VARCHAR2(100) NOT NULL,
     PRIMARY KEY (IDtabla_Direccion, ID_Direccion)
-);
+) TABLESPACE TBS_VETERINARIA1;
 
 CREATE TABLE Cliente(
     IDtabla_Cliente VARCHAR2(3) DEFAULT 'CLI' NOT NULL,
@@ -18,7 +27,7 @@ CREATE TABLE Cliente(
     Telefono VARCHAR2(15) NOT NULL,
     Fk_Direccion NUMBER NOT NULL,
     PRIMARY KEY (IDtabla_Cliente, ID_Cliente)
-);
+) TABLESPACE TBS_VETERINARIA1;
 
 CREATE TABLE Veterinario(
     IDtabla_Veterinario VARCHAR2(3) DEFAULT 'VET' NOT NULL,
@@ -29,7 +38,7 @@ CREATE TABLE Veterinario(
     Telefono VARCHAR2(15) NOT NULL,
     Fk_Direccion NUMBER NOT NULL,
     PRIMARY KEY (IDtabla_Veterinario, ID_Veterinario)
-);
+) TABLESPACE TBS_VETERINARIA1;
 
 CREATE TABLE Animal(
     IDtabla_Animal VARCHAR2(3) DEFAULT 'ANN' NOT NULL,
@@ -38,7 +47,7 @@ CREATE TABLE Animal(
     Peso NUMBER NOT NULL,
     Notas VARCHAR2(200) NOT NULL,
     PRIMARY KEY (IDtabla_Animal, ID_Animal)
-);
+) TABLESPACE TBS_VETERINARIA1;
 
 CREATE TABLE Mascota(
     IDtabla_Mascota VARCHAR2(3) DEFAULT 'PET' NOT NULL,
@@ -49,7 +58,7 @@ CREATE TABLE Mascota(
     Peso NUMBER NOT NULL,
     Notas VARCHAR2(200) NOT NULL,
     PRIMARY KEY (IDtabla_Mascota, ID_Mascota)
-);
+) TABLESPACE TBS_VETERINARIA1;
 
 CREATE TABLE Canino(
     IDtabla_Canino VARCHAR2(3) DEFAULT 'CAN' NOT NULL,
@@ -59,7 +68,7 @@ CREATE TABLE Canino(
     Medida_Alimento NUMBER NOT NULL,
     Notas VARCHAR2(200) NOT NULL,
     PRIMARY KEY (IDtabla_Canino, ID_Canino)
-);
+) TABLESPACE TBS_VETERINARIA1;
 
 CREATE TABLE Felino(
     IDtabla_Felino VARCHAR2(3) DEFAULT 'CAT' NOT NULL,
@@ -69,7 +78,7 @@ CREATE TABLE Felino(
     Medida_Alimento NUMBER NOT NULL,
     Notas VARCHAR2(200) NOT NULL,
     PRIMARY KEY (IDtabla_Felino, ID_Felino)
-);
+) TABLESPACE TBS_VETERINARIA1;
 
 CREATE TABLE Granja(
     IDtabla_Granja VARCHAR2(3) DEFAULT 'GRA' NOT NULL,
@@ -80,7 +89,7 @@ CREATE TABLE Granja(
     Medida_Alimento NUMBER NOT NULL,
     Notas VARCHAR2(200) NOT NULL,
     PRIMARY KEY (IDtabla_Granja, ID_Granja)
-);
+) TABLESPACE TBS_VETERINARIA1;
 
 CREATE TABLE Roedor(
     IDtabla_Roedor VARCHAR2(3) DEFAULT 'ROR' NOT NULL,
@@ -90,7 +99,7 @@ CREATE TABLE Roedor(
     Medida_Alimento NUMBER NOT NULL,
     Notas VARCHAR2(200) NOT NULL,
     PRIMARY KEY (IDtabla_Roedor, ID_Roedor)
-);
+) TABLESPACE TBS_VETERINARIA1;
 
 CREATE TABLE Ave(
     IDtabla_Ave VARCHAR2(3) DEFAULT 'AVE' NOT NULL,
@@ -100,7 +109,7 @@ CREATE TABLE Ave(
     Medida_Alimento NUMBER NOT NULL,
     Notas VARCHAR2(200) NOT NULL,
     PRIMARY KEY (IDtabla_Ave, ID_Ave)
-);
+) TABLESPACE TBS_VETERINARIA1;
 
 CREATE TABLE Pez(
     IDtabla_Pez VARCHAR2(3) DEFAULT 'PEZ' NOT NULL,
@@ -111,7 +120,7 @@ CREATE TABLE Pez(
     Temperatura NUMBER NOT NULL,
     Notas VARCHAR2(200) NOT NULL,
     PRIMARY KEY (IDtabla_Pez, ID_Pez)
-);
+) TABLESPACE TBS_VETERINARIA1;
 
 CREATE TABLE Reptil(
     IDtabla_Reptil VARCHAR2(3) DEFAULT 'REP' NOT NULL,
@@ -122,7 +131,7 @@ CREATE TABLE Reptil(
     Temperatura NUMBER NOT NULL,
     Notas VARCHAR2(200) NOT NULL,
     PRIMARY KEY (IDtabla_Reptil, ID_Reptil)
-);
+) TABLESPACE TBS_VETERINARIA1;
 
 CREATE TABLE Otros(
     IDtabla_Otro VARCHAR2(3) DEFAULT 'OTR' NOT NULL,
@@ -132,7 +141,7 @@ CREATE TABLE Otros(
     Medida_Alimento NUMBER NOT NULL,
     Notas VARCHAR2(200) NOT NULL,
     PRIMARY KEY (IDtabla_Otro, ID_OtroINT)
-);
+) TABLESPACE TBS_VETERINARIA1;
 
 CREATE TABLE Historial(
     IDtabla_Historial VARCHAR2(3) DEFAULT 'HIS' NOT NULL,
@@ -143,7 +152,7 @@ CREATE TABLE Historial(
     Descripcion VARCHAR2(100) NOT NULL,
     Fecha DATE NOT NULL,
     PRIMARY KEY (IDtabla_Historial, ID_Historial)
-);
+) TABLESPACE TBS_VETERINARIA1;
 
 CREATE TABLE Servicio(
     IDtabla_Servicio VARCHAR2(3) DEFAULT 'SER' NOT NULL,
@@ -152,7 +161,7 @@ CREATE TABLE Servicio(
     Descripcion VARCHAR2(100) NOT NULL,
     Precio NUMBER NOT NULL,
     PRIMARY KEY (IDtabla_Servicio, ID_Servicio)
-);
+) TABLESPACE TBS_VETERINARIA1;
 
 CREATE TABLE Cita(
     IDtabla_Cita VARCHAR2(3) DEFAULT 'CIT' NOT NULL,
@@ -163,7 +172,7 @@ CREATE TABLE Cita(
     Fecha_Cita DATE NOT NULL,
     Hora VARCHAR2(5) NOT NULL, -- Almacenado como 'HH:MI'
     PRIMARY KEY (IDtabla_Cita, ID_Cita)
-);
+) TABLESPACE TBS_VETERINARIA1;
 
 CREATE TABLE Procedimiento(
     IDtabla_Procedimiento VARCHAR2(3) DEFAULT 'PCD' NOT NULL,
@@ -172,7 +181,7 @@ CREATE TABLE Procedimiento(
     Descripcion VARCHAR2(100) NOT NULL,
     Internado NUMBER(1) NOT NULL, -- 0 o 1 en lugar de BIT
     PRIMARY KEY (IDtabla_Procedimiento, ID_Procedimiento)
-);
+) TABLESPACE TBS_VETERINARIA1;
 
 CREATE TABLE Consulta(
     IDtabla_Consulta VARCHAR2(3) DEFAULT 'CON' NOT NULL,
@@ -185,7 +194,7 @@ CREATE TABLE Consulta(
     Fecha_Cita DATE NOT NULL,
     Hora VARCHAR2(5) NOT NULL, -- Almacenado como 'HH:MI'
     PRIMARY KEY (IDtabla_Consulta, ID_Consulta)
-);
+) TABLESPACE TBS_VETERINARIA1;
 
 CREATE TABLE Producto(
     IDtabla_Producto VARCHAR2(3) DEFAULT 'PRO' NOT NULL,
@@ -194,7 +203,7 @@ CREATE TABLE Producto(
     Descripcion VARCHAR2(100) NOT NULL,
     Fk_Stock NUMBER NOT NULL,
     PRIMARY KEY (IDtabla_Producto, ID_Producto)
-);
+) TABLESPACE TBS_VETERINARIA1;
 
 CREATE TABLE Inventario(
     IDtabla_Stock VARCHAR2(3) DEFAULT 'INV' NOT NULL,
@@ -203,7 +212,7 @@ CREATE TABLE Inventario(
     Precio_U NUMBER NOT NULL,
     Cantidad NUMBER NOT NULL,
     PRIMARY KEY (IDtabla_Stock, ID_Stock)
-);
+) TABLESPACE TBS_VETERINARIA1;
 
 CREATE TABLE Factura(
     IDtabla_Factura VARCHAR2(3) DEFAULT 'FFF' NOT NULL,
@@ -212,7 +221,7 @@ CREATE TABLE Factura(
     Total NUMBER NOT NULL,
     Fecha_Factura DATE NOT NULL,
     PRIMARY KEY (IDtabla_Factura, ID_Factura)
-);
+) TABLESPACE TBS_VETERINARIA1;
 
 CREATE TABLE Detalle_Factura(
     IDtabla_DetalleFactura VARCHAR2(3) DEFAULT 'DFF' NOT NULL,
@@ -223,7 +232,10 @@ CREATE TABLE Detalle_Factura(
     Cantidad NUMBER NOT NULL,
     Precio_U NUMBER NOT NULL,
     PRIMARY KEY (IDtabla_DetalleFactura, ID_DetalleFactura)
-);
+) TABLESPACE TBS_VETERINARIA1;
+
+SELECT * FROM dba_tablespaces
+WHERE tablespace_name = 'TBS_VETERINARIA1'
 
 
 
